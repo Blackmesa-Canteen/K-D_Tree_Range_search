@@ -4,7 +4,7 @@
  *  In this assignment, a K-D tree is created to support interactive map functionality for
  *  the City of Melbourne Census of Land Use and Employment (CLUE) dataset. A user will be
  *  able to query locations to find nearby businesses.
- *  This main function is for stage 1: nearest find.
+ *  This main function is for stage 2: range find.
  *
  *  Input:
  *  > This program can take two command line arguments: (1) the name of the source file (.csv
@@ -12,16 +12,16 @@
  *    a user could input one coordinate from the screen at a time. The program keeps asking
  *    the user to enter key values until 'quit!' is typed.
  *  > Users can also use the UNIX operator < to redirect input from a file that has coordinates
- *    to be searched, one per line.
+ *    and range to be searched, one per line.
  *
  *  Output:
  *  > The number of key comparisons performed during the search is written to stdout.
- *  > An outfile contains target points coordinate and their nearest company(s).
+ *  > An outfile contains points coordinate that is in range of the target point.
  *
  *  Input Example 1:                Input Example 2:
  *  ~$ ./dict test.csv out.txt      ~$ ./dict test.csv out < testfile
- *  ~$ 0 0
- *  ~$ 114.514 -19.19
+ *  ~$ 0 0 0.005
+ *  ~$ 114.514 -19.19 3
  *  ~$ quit!
  */
 

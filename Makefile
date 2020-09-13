@@ -1,7 +1,7 @@
 # Created by Xiaotian Li on Sep 13, 2020
 # A make file for Assignment 2
 
-map1: main.o list.o dictFunctions.o kdTree.o pointFunctions.o findClosest.o
+map2: main.o list.o dictFunctions.o kdTree.o pointFunctions.o findClosest.o
 	gcc -o map1 main.o list.o dictFunctions.o kdTree.o pointFunctions.o findClosest.o -m
 
 kdTree.o: kdTree.c list.h pointFunctions.h dictFunctions.h

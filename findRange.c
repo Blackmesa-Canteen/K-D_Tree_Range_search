@@ -97,6 +97,7 @@ void countCompare(int *compareCounter) {
     *compareCounter = *compareCounter + 1;
 }
 
+/* output to file */
 void displayFound(FILE *outfile, treeNode_ptr p_result,
                   treeNode_ptr p_target, double range) {
 
@@ -128,8 +129,7 @@ void findInRange(FILE *outfile, treeNode_ptr p_root, treeNode_ptr p_target,
 {
     double d, dMQ;
     if (p_root == NULL) return;
-
-    countCompare(compareCounter);
+    //countCompare(compareCounter);
     d = distanceCalc(p_root, p_target);
     if(p_root->dimension == 'x') {
         dMQ = p_root->nodeX - p_target->nodeX;
@@ -149,8 +149,10 @@ void findInRange(FILE *outfile, treeNode_ptr p_root, treeNode_ptr p_target,
     }
 
     if (dMQ > 0) {
+        countCompare(compareCounter);
         findInRange(outfile, p_root->left, p_target, p_close, range, compareCounter, isFound);
     } else {
+        countCompare(compareCounter);
         findInRange(outfile, p_root->right, p_target, p_close, range, compareCounter, isFound);
     }
 
@@ -159,13 +161,15 @@ void findInRange(FILE *outfile, treeNode_ptr p_root, treeNode_ptr p_target,
 
     /* check the other side */
     if (dMQ > 0) {
+        countCompare(compareCounter);
         findInRange(outfile, p_root->right, p_target, p_close, range, compareCounter, isFound);
     } else {
+        countCompare(compareCounter);
         findInRange(outfile, p_root->left, p_target, p_close, range, compareCounter, isFound);
     }
-
 }
 
+/* search in range and output result */
 void searchRange(treeNode_ptr root, FILE *outfile) {
 
     const char quitCommand[] = "quit!";
@@ -177,7 +181,6 @@ void searchRange(treeNode_ptr root, FILE *outfile) {
     treeNode_ptr p_root = NULL;
     treeNode_ptr p_target = NULL;
     treeNode_ptr p_close = NULL;
-    double bestD;
     int compareCounter;
     int isFound;
 
@@ -191,7 +194,6 @@ void searchRange(treeNode_ptr root, FILE *outfile) {
         if (!strcmp(quitCommand, whatToFind)) {
             break;
         }
-
         targetX = getX(whatToFind);
         targetY = getY(whatToFind);
         range = getRange(whatToFind);
@@ -209,7 +211,7 @@ void searchRange(treeNode_ptr root, FILE *outfile) {
             fprintf(outfile, "%.9g %.9g %.9g --> NOTFOUND\n", p_target->nodeX,
                     p_target->nodeY, range);
         }
-        printf("%.9g %.9g %.9g --> %d\n", targetX, targetY, compareCounter);
+        printf("%.9g %.9g %.9g --> %d\n", targetX, targetY, range, compareCounter);
         free(p_target);
 
     }

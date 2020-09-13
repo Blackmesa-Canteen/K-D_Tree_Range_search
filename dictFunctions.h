@@ -1,5 +1,5 @@
 //
-// Created by Shaotien Lee on 2020/9/13.
+// Created by xiaotian on 2020/9/13.
 //
 
 #ifndef ASSGINMENT2_STAGE2_CODE_DICTFUNCTIONS_H
